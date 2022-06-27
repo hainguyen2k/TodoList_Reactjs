@@ -3,14 +3,14 @@ import React from "react";
 import TodoItems from "../../TodoItems/TodoItems";
 
 export interface IStatus {
-  status: { id: number; name: string }[];
+  status?: { id: number; name: string }[];
 }
 
 function StatusColumn({ status }: IStatus) {
   return (
     <>
-      {status.map((stt) => (
-        <Grid item xs={3}>
+      {status?.map((stt) => (
+        <Grid key={stt.id} item xs={3}>
           <Box sx={{ backgroundColor: "red", m: "10px" }}>
             <Typography
               variant="h5"

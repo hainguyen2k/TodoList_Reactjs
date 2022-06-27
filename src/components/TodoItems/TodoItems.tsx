@@ -8,11 +8,16 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { IText } from "../AddBox/AddNewTodoBox";
 import { IStatus } from "../Column/StatusColumn/StatusColumn";
+
+interface ITodos {
+  todos: IText[];
+}
 
 const ITEM_HEIGHT = 48;
 
-function TodoItems({ status }: IStatus) {
+function TodoItems({ status }: IStatus, { todos }: ITodos) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -54,7 +59,7 @@ function TodoItems({ status }: IStatus) {
                 },
               }}
             >
-              {status.map((listStatusInMenu) => (
+              {status?.map((listStatusInMenu) => (
                 <MenuItem
                   key={listStatusInMenu.name}
                   selected={listStatusInMenu.name === "Pyxis"}
